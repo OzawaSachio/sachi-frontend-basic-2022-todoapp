@@ -22,6 +22,7 @@ const CheckIconContainer = styled.div`
   height: 20px;
   border: solid 2px ${COLOR.LIGHT_GRAY};
   border-radius: 2px;
+  cursor: pointer;
   &:hover {
     ${CheckIcon} {
       display: block;
