@@ -29,13 +29,11 @@ const StyledAddTaskButton = styled.button`
     height: 20px;
   }
 `;
-
 const StyledAddTaskText = styled.div`
   color: ${COLOR.GREEN};
   font-family: ${FONTFAMILY.NOTO_SANS};
   ${TEXT.S}
 `;
-
 const Shadow = styled.div`
   position: absolute;
   width: 100%;
