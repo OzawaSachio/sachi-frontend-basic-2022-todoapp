@@ -29,9 +29,7 @@ const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
         ) : (
           <>
             <StyledTaskName>{taskName}</StyledTaskName>
-            <StyledEditButtonWrapper>
-              <EditButton onClick={onEditButtonClick} />
-            </StyledEditButtonWrapper>
+            <EditButton onClick={onEditButtonClick} />
           </>
         )}
       </StyledNameAndButtonWrapper>
@@ -59,5 +57,3 @@ const StyledTaskName = styled.div`
   color: ${COLOR.LIGHT_GRAY};
   ${TEXT.S}
 `;
-
-const StyledEditButtonWrapper = styled.div``;
