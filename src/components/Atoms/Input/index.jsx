@@ -8,11 +8,13 @@ const Input = ({ defaultValue = "", onEditComplete }) => {
 
   useEffect(() => {
     inputRef.current.value = defaultValue;
-    console.log(defaultValue);
     inputRef.current.focus();
     inputRef.current.addEventListener(
       "blur",
       () => {
+        if (inputRef.current === null) {
+          return;
+        }
         onEditComplete(inputRef.current.value);
       },
       []
