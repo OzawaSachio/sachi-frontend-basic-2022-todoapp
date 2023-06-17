@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import COLOR from "../../../variables/color";
-import TEXT from "../../../variables/texts";
 import AddTaskButton from "../../Atoms/AddTaskButton";
-import Checkbox from "../../Atoms/Checkbox";
-import Input from "../../Atoms/Input";
-import EditButton from "../../Atoms/EditButton";
 import Task from "../../Molecules/Task";
-import { startTransition } from "react";
 
 const TodoCard = () => {
   const [taskList, setTaskList] = useState([
