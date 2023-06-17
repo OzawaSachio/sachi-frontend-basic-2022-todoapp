@@ -37,22 +37,44 @@ const TodoCard = () => {
   };
 
   const onTaskNameChange = (index, taskName) => {
-    setTaskList((current) =>
-      current.map((task, i) =>
-        i === index ? { name: taskName, initializing: false } : task
-      )
-    );
+    if (taskName === "") {
+      onTaskComplete(index);
+    } else {
+      setTaskList((current) =>
+        current.map((task, i) =>
+          i === index ? { name: taskName, initializing: false } : task
+        )
+      );
+    }
   };
 
   return (
     <StyledWrapper>
-      <AddTaskButton onClick={onAddTaskButtonClick} />
-      <StyledTaskList>{taskElements}</StyledTaskList>
+      <AddTaskButtonWrapper>
+        <AddTaskButton onClick={onAddTaskButtonClick} />
+      </AddTaskButtonWrapper>
+      <StyledTaskListWrapper>
+        <StyledTaskList>{taskElements}</StyledTaskList>
+      </StyledTaskListWrapper>
     </StyledWrapper>
   );
 };
 export default TodoCard;
 
-const StyledWrapper = styled.div``;
+const StyledWrapper = styled.div`
+  padding: 20px;
+`;
 
-const StyledTaskList = styled.div``;
+const AddTaskButtonWrapper = styled.div`
+  padding-bottom: 12px;
+`;
+
+const StyledTaskListWrapper = styled.div`
+  padding-left: 6px;
+`;
+
+const StyledTaskList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
