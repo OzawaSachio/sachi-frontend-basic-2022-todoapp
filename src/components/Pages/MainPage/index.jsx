@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import styled from "styled-components";
 import COLOR from "../../../variables/color";
 import Title from "../../Atoms/Title";
 import TodoCard from "../../Organisms/TodoCard";
