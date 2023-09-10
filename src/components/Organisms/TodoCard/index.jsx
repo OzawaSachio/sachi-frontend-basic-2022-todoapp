@@ -43,12 +43,15 @@ const TodoCard = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("taskData", taskList);
+    localStorage.setItem("taskData", JSON.stringify(taskList));
   }, [taskList]);
 
-  useEffect(() => {
-    localStorage.getItem("taskData");
-  }, []);
+  const data = () => {
+    useEffect(() => {
+      JSON.parse(localStorage.getItem("taskData"));
+      setTaskList([...data]);
+    }, []);
+  };
 
   return (
     <StyledWrapper>
