@@ -4,11 +4,7 @@ import AddTaskButton from "../../Atoms/AddTaskButton";
 import Task from "../../Molecules/Task";
 
 const TodoCard = () => {
-  const [taskList, setTaskList] = useState([
-    { name: "a", initializing: false },
-    { name: "b", initializing: false },
-    { name: "c", initializing: false },
-  ]);
+  const [taskList, setTaskList] = useState([]);
 
   const onAddTaskButtonClick = () => {
     setTaskList([...taskList, { name: "", initializing: true }]);
@@ -43,15 +39,14 @@ const TodoCard = () => {
   };
 
   useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("taskData"));
+    if (data == []) return;
+    setTaskList(data);
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("taskData", JSON.stringify(taskList));
   }, [taskList]);
-
-  const data = () => {
-    useEffect(() => {
-      JSON.parse(localStorage.getItem("taskData"));
-      setTaskList([...data]);
-    }, []);
-  };
 
   return (
     <StyledWrapper>
