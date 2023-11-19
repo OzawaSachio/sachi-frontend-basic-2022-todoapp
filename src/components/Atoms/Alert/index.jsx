@@ -5,7 +5,7 @@ const Alert = ({ visible, errortext }) => {
 };
 
 const AlertText = styled.div`
-  color: ${(props) => (props.isActive ? "red" : "blue")};
+  display: ${(props) => (props.isActive ? "block" : "none")};
 `;
 
 export default Alert;

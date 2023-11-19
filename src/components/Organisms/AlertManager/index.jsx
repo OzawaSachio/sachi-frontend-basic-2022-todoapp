@@ -7,7 +7,12 @@ const AlertManager = () => {
   console.log(AlertHandlerContext.visible);
   AlertHandlerContext.setAlert("message");
 
-  return <Alert visible={} errorText={} />;
+  return (
+    <Alert
+      visible={AlertHandlerContext.visible}
+      errorText={AlertHandlerContext.errorText}
+    />
+  );
 };
 
 export default AlertManager;
