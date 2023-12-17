@@ -1,6 +1,11 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const Alert = ({ visible, errortext }) => {
+  useEffect(() => {
+    console.log("visible", visible);
+    console.log("errorText", errortext);
+  }, [errortext]);
   return <AlertText isActive={visible}> {errortext} </AlertText>;
 };
 

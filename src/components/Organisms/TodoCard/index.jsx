@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AddTaskButton from "../../Atoms/AddTaskButton";
 import Task from "../../Molecules/Task";
+import { useAlertHandlerContext } from "../../../contexts/alert_handler";
 
 const TodoCard = () => {
   const [taskList, setTaskList] = useState([]);
@@ -29,6 +30,8 @@ const TodoCard = () => {
   const onTaskNameChange = (index, taskName) => {
     if (taskName === "") {
       onTaskComplete(index);
+      console.log(AlertHandlerContext);
+      AlertHandlerContext.setAlert("message");
     } else {
       setTaskList((current) =>
         current.map((task, i) =>
@@ -46,6 +49,8 @@ const TodoCard = () => {
   useEffect(() => {
     localStorage.setItem("taskData", JSON.stringify(taskList));
   }, [taskList]);
+
+  const AlertHandlerContext = useAlertHandlerContext();
 
   return (
     <StyledWrapper>
