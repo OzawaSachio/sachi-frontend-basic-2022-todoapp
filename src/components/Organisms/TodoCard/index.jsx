@@ -30,8 +30,7 @@ const TodoCard = () => {
   const onTaskNameChange = (index, taskName) => {
     if (taskName === "") {
       onTaskComplete(index);
-      console.log(AlertHandlerContext);
-      AlertHandlerContext.setAlert("message");
+      AlertHandlerContext.setAlert("タスクの名前が設定されていません。");
     } else {
       setTaskList((current) =>
         current.map((task, i) =>
@@ -57,9 +56,11 @@ const TodoCard = () => {
       <AddTaskButtonWrapper>
         <AddTaskButton onClick={onAddTaskButtonClick} />
       </AddTaskButtonWrapper>
-      <StyledTaskListWrapper>
-        <StyledTaskList>{taskElements}</StyledTaskList>
-      </StyledTaskListWrapper>
+      {taskList.length !== 0 ? (
+        <StyledTaskListWrapper>
+          <StyledTaskList>{taskElements}</StyledTaskList>
+        </StyledTaskListWrapper>
+      ) : null}
     </StyledWrapper>
   );
 };
@@ -69,11 +70,10 @@ const StyledWrapper = styled.div`
   padding: 20px;
 `;
 
-const AddTaskButtonWrapper = styled.div`
-  padding-bottom: 12px;
-`;
+const AddTaskButtonWrapper = styled.div``;
 
 const StyledTaskListWrapper = styled.div`
+  padding-top: 12px;
   padding-left: 6px;
 `;
 

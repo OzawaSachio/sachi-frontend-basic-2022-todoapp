@@ -28,7 +28,7 @@ const Input = ({ defaultValue = "", onEditComplete }) => {
       },
       []
     );
-  });
+  }, []);
 
   return <InputText ref={inputRef} />;
 };

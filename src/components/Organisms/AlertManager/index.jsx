@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAlertHandlerContext } from "../../../contexts/alert_handler";
 import Alert from "../../Atoms/Alert";
 
 const AlertManager = () => {
   const AlertHandlerContext = useAlertHandlerContext();
 
-  console.log(AlertHandlerContext.visible);
+  const [timeoutHandler, setTimeoutHandler] = useState(null);
+
+  useEffect(() => {
+    if (timeoutHandler !== null) {
+      window.clearTimeout(timeoutHandler);
+    }
+    const newTimeoutHandler = window.setTimeout(() => {
+      AlertHandlerContext.closeAlert();
+      setTimeoutHandler(null);
+    }, 5000);
+
+    setTimeoutHandler(newTimeoutHandler);
+  }, [AlertHandlerContext]);
 
   return (
     <Alert
