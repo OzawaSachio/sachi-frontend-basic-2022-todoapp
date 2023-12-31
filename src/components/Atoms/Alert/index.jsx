@@ -34,6 +34,11 @@ const AlertWrapper = styled.div`
   opacity: 0;
   ${(props) =>
     props.isActive && `opacity: 1; transform: translateX(-50%) translateY(0%)`};
+
+  @media (max-width: ${BREAKPOINT.MEDIUM}) {
+    padding: 0px 20px;
+    top: 40px;
+  }
 `;
 
 export default Alert;
