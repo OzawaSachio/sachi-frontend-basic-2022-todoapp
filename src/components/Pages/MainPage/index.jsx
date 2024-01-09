@@ -34,5 +34,5 @@ const TitleWrapper = styled.div`
 const TodoCardWrapper = styled.div`
   background-color: ${COLOR.LIGHT_BLACK};
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 `;

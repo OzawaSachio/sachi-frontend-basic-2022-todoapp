@@ -23,6 +23,7 @@ const AlertText = styled.div`
 `;
 
 const AlertWrapper = styled.div`
+  z-index: 1000;
   width: 100%;
   display: flex;
   justify-content: center;
