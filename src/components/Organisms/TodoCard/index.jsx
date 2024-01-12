@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AddTaskButton from "../../Atoms/AddTaskButton";
 import Task from "../../Molecules/Task";
+import { useAlertHandlerContext } from "../../../contexts/alert_handler";
 
 const TodoCard = () => {
   const [taskList, setTaskList] = useState([]);
@@ -29,6 +30,7 @@ const TodoCard = () => {
   const onTaskNameChange = (index, taskName) => {
     if (taskName === "") {
       onTaskComplete(index);
+      AlertHandlerContext.setAlert("タスクの名前が設定されていません。");
     } else {
       setTaskList((current) =>
         current.map((task, i) =>
@@ -47,14 +49,18 @@ const TodoCard = () => {
     localStorage.setItem("taskData", JSON.stringify(taskList));
   }, [taskList]);
 
+  const AlertHandlerContext = useAlertHandlerContext();
+
   return (
     <StyledWrapper>
       <AddTaskButtonWrapper>
         <AddTaskButton onClick={onAddTaskButtonClick} />
       </AddTaskButtonWrapper>
-      <StyledTaskListWrapper>
-        <StyledTaskList>{taskElements}</StyledTaskList>
-      </StyledTaskListWrapper>
+      {taskList.length !== 0 ? (
+        <StyledTaskListWrapper>
+          <StyledTaskList>{taskElements}</StyledTaskList>
+        </StyledTaskListWrapper>
+      ) : null}
     </StyledWrapper>
   );
 };
@@ -64,11 +70,10 @@ const StyledWrapper = styled.div`
   padding: 20px;
 `;
 
-const AddTaskButtonWrapper = styled.div`
-  padding-bottom: 12px;
-`;
+const AddTaskButtonWrapper = styled.div``;
 
 const StyledTaskListWrapper = styled.div`
+  padding-top: 12px;
   padding-left: 6px;
 `;
 
